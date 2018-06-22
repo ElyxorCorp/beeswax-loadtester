@@ -1,5 +1,5 @@
 from beeswax.openrtb.openrtb_pb2 import BidRequest
-import locust import HttpLocust, TaskSet
+from locust import HttpLocust, TaskSet, task
 import logging
 import os
 
@@ -20,7 +20,8 @@ if secret_value is None:
 
 class UserBehavior(TaskSet):
 
-    def on_start(self):
+    @task
+    def bidder_task(self):
         bid_request = BidRequest()
         h = {
             "beeswax-auth-secret": secret_value

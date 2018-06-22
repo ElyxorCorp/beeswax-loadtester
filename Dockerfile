@@ -37,4 +37,4 @@ RUN python setup.py build
 RUN python setup.py install
 
 WORKDIR ${appdir}
-ENTRYPOINT locust -f locust_files/my_locust_file.py --host=https://beeswax-bidder.myhost.com
+ENTRYPOINT locust -f loadtester.py --host=https://beeswax-bidder.website.com
